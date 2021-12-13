@@ -28,7 +28,7 @@ namespace Film_Forme
         private void uvezi()
         {
             SqlConnection veza = new SqlConnection(cs);
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * from film", veza);
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * from podaciFilm", veza);
             adapter.Fill(podaci);
         }
         public Form1()
@@ -44,7 +44,7 @@ namespace Film_Forme
         private void unesi_Click(object sender, EventArgs e)
         {
             SqlConnection veza = new SqlConnection(cs);
-            string funkcija = $"INSERT INTO film values({naziv.Text}, {trajanje.Text}, {zanr.Text}, {original.Text}, {poreklo.Text},{id.Text})";
+            string funkcija = $"INSERT INTO podaciFilm values({naziv.Text}, {trajanje.Text}, {zanr.Text}, {original.Text}, {poreklo.Text},{id.Text})";
             SqlCommand menjanje = new SqlCommand(funkcija, veza);
             veza.Open();
             menjanje.ExecuteNonQuery();
@@ -102,7 +102,7 @@ namespace Film_Forme
         private void brisi_Click(object sender, EventArgs e)
         {
                 SqlConnection veza = new SqlConnection(cs);
-                SqlCommand brisanje = new SqlCommand("DELETE FROM film WHERE id=" + id.Text, veza);
+                SqlCommand brisanje = new SqlCommand("DELETE FROM podaciFilm WHERE id=" + id.Text, veza);
                 veza.Open();
                 brisanje.ExecuteNonQuery();
                 veza.Close();
@@ -117,7 +117,7 @@ namespace Film_Forme
         private void menjaj_Click(object sender, EventArgs e)
         {
             SqlConnection veza = new SqlConnection(cs);
-            string funkcija = $"UPDATE film SET naziv={naziv.Text}, trajanje={trajanje.Text}, zanr={zanr.Text}, nazivOriginala={original.Text}, zemljaPorekla={poreklo.Text} WHERE id={id.Text}";
+            string funkcija = $"UPDATE podaciFilm SET naziv={naziv.Text}, trajanje={trajanje.Text}, zanr={zanr.Text}, nazivOriginala={original.Text}, zemljaPorekla={poreklo.Text} WHERE id={id.Text}";
             SqlCommand menjanje = new SqlCommand(funkcija, veza);
             veza.Open();
             menjanje.ExecuteNonQuery();
